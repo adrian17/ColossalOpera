@@ -137,8 +137,8 @@ book.pdf: book.tex easy.tex int.tex hard.tex
 	pdflatex -shell-escape book.tex
 	makeindex book	
 	# do this thrice because of the TOC and tables
-	pdflatex -shell-escape book.tex
-	pdflatex -shell-escape book.tex	
+	pdflatex -shell-escape book.tex > /dev/null 2>&1
+	pdflatex -shell-escape book.tex > /dev/null 2>&1
 
 easy.tex: easy.md 
 	pandoc easy.md -o easytmp.tex $(PANDOCARGS)

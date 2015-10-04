@@ -1,0 +1,22 @@
+sudo: required
+dist: trusty
+language: generic
+addons:
+  apt:
+    packages:
+    - python-pygments
+    - pandoc
+    - texlive
+    - texlive-latex-extra
+    - texlive-humanities
+    - latex-xcolor
+install:
+- cd book
+script:
+- make pdf
+after_success:
+- "./github_deploy.sh"
+env:
+  global:
+  - GH_REF: github.com/adrian17/ColossalOpera.git
+  - secure: Ue/xFkBZSS7pzVj3RgnVB8XRM2GzdqArGOZE6fD0CNDRB8oUmFAYF90yMEoQCAQyqITPRocIIkoJeI9yh/tKV75L6FioRaYqsm3XQU2Zp081ukhYhCfPngjo5oRbJ1BsJ+mGSsAd1ic0lVKyoXQ4kk2t7eBZot+rqSlKJw4N6QKHIZ9jY4OdQj+GqgShDnABYuKXmKzg+ST2J18vKrVpDk9GDik8+8Jrlm5/al8n9MABtboPmZVs5FGRUYXORhmoTStmjW4cDkOaE+sRTsiAyNhLAHWdF3dyeEynrDEQwyH36bLcoA7D4QwIJqjimsWdP7DwqiqKqXNR9ENsOrcAqNMNTu99l6Ucl/5snb16AAbkwIk8QtCMoQnIfUiZSq2YLim2i/JrXfY1Pkrhs45G/swCBh84i+BludZMnOGjgbAIU7tGOuBlNoKTB9Imb6C9n9i+qnpy1N8fA6pobgV/rBLsgEdVZBHZrbA3JkTV7csok8cet7p7J4bixMHnEpf+3aZouHIfuwwOI4fDLq991a60m66lKFV+11Q9m6bL+e8MCdYnVrkJYkoLKN7aDFAGFmqdW9E/MzhiUkeP+UDWtt9vNOmOMNivNBKJnvIsdi9W8u/bVqeUA5mxIooBLP2dY9FkjGzBnoCEbBtCaSk7htZ++BONsjr9RIA88M8SVBs=
