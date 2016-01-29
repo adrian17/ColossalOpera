@@ -1,0 +1,2533 @@
+# Title
+
+8 Puzzle
+
+## Difficulty
+
+Hard
+
+## Description
+
+The 8-puzzle problem is a puzzle invented and popularized by Noyes Palmer Chapman in the 1870s. It is played on a 3-by-3 grid with 8 square blocks labeled 1 through 8 and a blank square. Your goal is to rearrange the blocks so that they are in order. You are permitted to slide blocks horizontally or vertically into the blank square. Here's an example showing some of the intermediate steps:
+
+
+        1  3        1     3        1  2  3        1  2  3        1  2  3
+     4  2  5   =>   4  2  5   =>   4     5   =>   4  5      =>   4  5  6
+     7  8  6        7  8  6        7  8  6        7  8  6        7  8 
+
+     initial                                                      goal
+
+Write a program that reads the initial board and yields a sequence of board positions that solves the puzzle in the fewest number of moves. Also print out the total number of moves and the total number of states ever enqueued.
+
+## Input Description
+
+You'll be given the puzzle as a series of numbers and a blank. You can assume that it is a *3x3* grid and that you have (3*3)-1 (8) tiles. Example:
+
+    7 5 6
+    2 4 3
+    1 8
+
+## Output Description
+
+Output the steps you took to get to the solution.
+
+## Challenge Input
+
+    8 7 6
+    5 4 3
+    2 1 
+
+    5   3
+    2 8 4
+    6 7 1
+
+**Title** Coiled sentence
+
+**Difficulty** Hard
+
+**Description**
+
+You'll be given a matrix of letters that contain a coiled sentence. Your program should walk the grid to adjacent squares using only left, right, up, down (no diagonal) and every letter exactly once. You should wind up with a six word sentence made up of regular English words.
+
+Your input will be a list of integers *N*, which tells you how many lines to read, then the row and column (indexed from 1) to start with, and then the letter matrix beginning on the next line.  
+
+**Input**
+
+        6 1 1
+        T H T L E D 
+        P E N U R G
+        I G S D I S
+        Y G A W S I 
+        W H L Y N T
+        I T A R G I
+
+(Start at the T in the upper left corner.)
+
+**Expected Output** 
+
+        THE PIGGY WITH LARYNGITIS WAS DISGRUNTLED
+
+**Challenge Input**
+
+    5 1 1
+    I E E H E
+    T K P T L
+    O Y S F I 
+    U E C F N
+    R N K O E
+
+(Start with the I in the upper left corner)
+
+**Challenge Output**
+
+    IT KEEPS YOUR NECK OFF THE LINE
+
+http://en.wikipedia.org/wiki/Vehicle_routing_problem
+http://www.mafy.lut.fi/study/DiscreteOpt/CH6.pdf
+http://wps.prenhall.com/wps/media/objects/9434/9660836/online_tutorials/heizer10e_tut5.pdf
+
+# Title
+
+Customer Unit Delivery Scheduling
+
+## Difficulty
+
+Hard
+
+## Description
+
+You run a business where you sell doohickies, and business is booming. You're customers are all local, but you're just getting off the ground and you don't have a large fleet of trucks, just one driver. Your truck has a finite capacity, and you have to keep costs down as you make deliveries - minimize milage, maximize deliveries, etc. That's where today's challenge program comes in. 
+
+As you make delivery runs, your truck will run out of enough doohickies and so you have to return to the depot and refill it. Assume that you refill the truck to its full capacity on visiting the depot. Finally, assume the truck has an infinite energy source, so don't worry about refueling.
+
+## Input Description
+
+You'll be given a line with an integer *N*, which tells you how many doohickies your truck can hold, and a two-tuple of coordinates (x & y) where the doohickie depot is. Then you'll be given a line with another single integer *M*, which tells you how many customers to read. Each customer line (of which there are *M*) will be how many units they want and then a two-tuple telling you the x,y coordinated where the customer is located. 
+
+## Output Description
+
+Your program should emit the sequence of stops you need to make, including depot stops, that *minimizes* the miles driven. You must deliver enough units for every customer when you stop! No customer will ask for more than *N* doohickies (your truck's capacity), and you *should* expect to travel from one customer to the next without stopping at the depot if you can deliver enough units at once. 
+
+## Challenge Input
+
+    40 (20,20)
+    12
+    10 (20,8)
+    15 (31,20)
+    18 (13,21)
+    17 (30,20)
+    3 (20,10)
+    5 (11,29)
+    9 (28,12)
+    4 (14,14)
+    6 (32,8)
+    12 (1,1)
+    18 (3,32)
+    23 (5,5)
+
+# Title
+
+Elevator Scheduling
+
+## Difficulty
+
+Hard
+
+## Description
+
+Most of us have seen and ridden elevators - you crazy folks in the UK and commonwealth countries often call them "lifts" - but I'm sure I'm not the only one who has puzzled about the scheduling algorithms. Which riders do you pick up and when? Do you service requests in the order of arrival or do you work on maximal overlap?
+
+For this challenge, you'll have to anwer those questions. You're designing an elevator scheduling algorithm for a building and you have plenty of riders to keep happy. You can have any algorithm you want as long as you stick to the constraints - the cars have a fixed capacity and speed.
+
+Make sure you see the bonus questions after the challenge input.
+
+## Input Description
+
+You'll be given a single integer *N* on a line. The first *N* lines will identify elevator cars and with these fields: Car identifier, capacity, vertical speed in floors per second, and starting floor. Assume instantaneous getting on or off the elevator for the riders once you arrive on the floor. Assume that the elevator *is able to* leave with the rider as soon as it is able, but it *may* linger waiting for more people to arrive - the choice is yours. 
+
+Example:
+
+	C1 12 .1 1
+
+This translates to Car 1, capacity of 12 people, moves at .1 floors per second (ten seconds to traverse a floor up or down), and starting at floor 1.
+
+Then you'll get another integer on a line, *M*. The next *M* lines will show riders, with fields: Rider identification, elevator request time in seconds, source floor and destination floor. Rider identification numbers will be *stable*, meaning the rider will have the same identifier the entire exercise. Examples:
+
+	R1 0 1 4
+
+This translates to Rider 1 who at time point 0 wants to go from floor 1 to floor 4. Riders will not transit floors without an elevator.
+
+## Output Description
+
+The main thing to show in the output is the time point at which all requests have been satisfied. (Yes, this is trying to get you guys to compete for the most efficient algorithm). Optionally show all intermediate steps and journeys, and wait times for riders. 
+
+## Challenge Input
+
+This was randomly generated, and so it has a few "oddities" in it, like riders who get on and off on the same floor, and riders who change their destination in the next second (e.g. in the middle of a ride). You still have to satisfy *every* request. 
+
+	2
+	C1 12 .1 1
+	C2 12 .2 1
+	359
+    R3 0 1 9
+    R4 1 1 11
+    R0 11 1 7
+    R2 11 1 9
+    R15 13 1 9
+    R5 26 1 4
+    R16 27 1 2
+    R1 28 1 2
+    R13 28 1 9
+    R10 32 1 3
+    R14 35 1 4
+    R8 36 1 10
+    R17 38 1 12
+    R3 49 9 9
+    R18 50 1 10
+    R7 51 1 3
+    R10 53 3 10
+    R12 54 1 6
+    R0 60 7 1
+    R1 62 2 1
+    R9 66 1 8
+    R19 66 1 6
+    R15 71 9 2
+    R11 72 1 8
+    R16 78 2 4
+    R6 82 1 12
+    R8 85 10 11
+    R10 89 10 12
+    R3 90 9 6
+    R5 94 4 7
+    R2 94 9 10
+    R6 95 12 1
+    R3 111 6 9
+    R14 114 4 5
+    R13 115 9 5
+    R19 117 6 2
+    R12 122 6 12
+    R4 123 11 7
+    R9 123 8 12
+    R6 124 1 5
+    R0 124 1 6
+    R7 127 3 3
+    R11 139 8 9
+    R7 141 3 4
+    R17 143 12 2
+    R14 143 5 5
+    R16 151 4 9
+    R5 155 7 12
+    R1 155 1 11
+    R18 159 10 10
+    R15 160 2 4
+    R19 162 2 3
+    R2 164 10 3
+    R11 164 9 9
+    R3 165 9 4
+    R12 167 12 1
+    R10 169 12 1
+    R0 174 6 9
+    R11 181 9 2
+    R18 182 10 12
+    R9 184 12 4
+    R5 185 12 11
+    R4 197 7 5
+    R2 198 3 3
+    R3 198 4 8
+    R6 199 5 5
+    R8 199 11 6
+    R13 201 5 5
+    R14 203 5 4
+    R1 205 11 12
+    R16 211 9 1
+    R6 212 5 11
+    R7 214 4 8
+    R15 216 4 6
+    R19 226 3 11
+    R1 230 12 12
+    R7 232 8 5
+    R0 234 9 12
+    R3 237 8 2
+    R17 238 2 6
+    R2 240 3 11
+    R12 240 1 3
+    R15 246 6 6
+    R13 247 5 10
+    R5 248 11 5
+    R10 249 1 6
+    R18 252 12 4
+    R9 253 4 8
+    R1 256 12 12
+    R4 257 5 12
+    R16 258 1 2
+    R13 258 10 5
+    R6 262 11 2
+    R11 263 2 7
+    R9 269 8 5
+    R3 271 2 6
+    R14 274 4 9
+    R5 282 5 12
+    R11 285 7 6
+    R16 287 2 8
+    R14 290 9 5
+    R2 297 11 4
+    R18 299 4 6
+    R13 300 5 5
+    R8 301 6 5
+    R0 303 12 3
+    R19 305 11 1
+    R7 310 5 8
+    R2 311 4 4
+    R1 315 12 8
+    R16 318 8 11
+    R8 320 5 8
+    R1 324 8 2
+    R10 325 6 9
+    R17 325 6 2
+    R2 330 4 11
+    R19 330 1 9
+    R9 332 5 5
+    R5 335 12 11
+    R18 338 6 9
+    R11 340 6 8
+    R12 342 3 9
+    R9 344 5 11
+    R12 346 9 12
+    R13 346 5 12
+    R6 351 2 2
+    R0 354 3 10
+    R10 358 9 9
+    R4 369 12 12
+    R15 370 6 8
+    R3 372 6 5
+    R17 374 2 9
+    R14 383 5 4
+    R7 389 8 1
+    R18 396 9 6
+    R12 396 12 7
+    R8 411 8 1
+    R16 419 11 3
+    R2 420 11 1
+    R10 420 9 11
+    R6 423 2 12
+    R1 423 2 8
+    R7 425 1 1
+    R11 426 8 4
+    R13 429 12 11
+    R19 430 9 7
+    R5 432 11 9
+    R15 435 8 3
+    R0 438 10 6
+    R6 444 12 9
+    R17 449 9 9
+    R14 452 4 4
+    R9 456 11 2
+    R18 460 6 7
+    R5 463 9 2
+    R12 464 7 2
+    R4 468 12 5
+    R13 468 11 6
+    R2 475 1 4
+    R19 478 7 4
+    R12 491 2 10
+    R10 496 11 7
+    R0 501 6 3
+    R2 501 4 2
+    R7 502 1 3
+    R3 502 5 7
+    R14 505 4 11
+    R6 507 9 2
+    R1 508 8 12
+    R15 510 3 1
+    R16 512 3 12
+    R11 515 4 10
+    R18 515 7 2
+    R19 517 4 3
+    R15 519 1 5
+    R9 521 2 2
+    R2 524 2 5
+    R14 525 11 2
+    R18 526 2 11
+    R4 530 5 5
+    R6 531 2 5
+    R8 536 1 5
+    R12 536 10 3
+    R16 536 12 7
+    R15 538 5 7
+    R17 538 9 5
+    R13 544 6 7
+    R10 546 7 11
+    R11 547 10 5
+    R7 548 3 1
+    R4 554 5 1
+    R3 558 7 11
+    R10 568 11 7
+    R6 570 5 5
+    R12 572 3 7
+    R7 573 1 4
+    R19 574 3 6
+    R16 576 7 3
+    R0 577 3 8
+    R4 586 1 9
+    R11 587 5 9
+    R14 587 2 4
+    R2 590 5 5
+    R5 599 2 2
+    R10 599 7 7
+    R9 601 2 4
+    R1 603 12 6
+    R3 606 11 1
+    R18 606 11 9
+    R13 610 7 11
+    R10 614 7 4
+    R17 615 5 4
+    R16 616 3 3
+    R12 617 7 10
+    R7 621 4 2
+    R6 622 5 4
+    R19 626 6 12
+    R2 628 5 11
+    R15 629 7 7
+    R14 630 4 4
+    R11 632 9 6
+    R8 632 5 3
+    R0 639 8 6
+    R6 649 4 10
+    R10 651 4 11
+    R9 653 4 6
+    R14 653 4 12
+    R4 655 9 10
+    R0 656 6 4
+    R2 660 11 5
+    R13 660 11 6
+    R3 663 1 6
+    R18 664 9 5
+    R1 667 6 7
+    R5 668 2 11
+    R12 668 10 9
+    R16 672 3 9
+    R15 675 7 4
+    R17 680 4 3
+    R7 681 2 10
+    R9 681 6 9
+    R10 686 11 10
+    R14 689 12 9
+    R4 690 10 3
+    R1 698 7 9
+    R18 698 5 8
+    R0 699 4 12
+    R19 705 12 7
+    R2 708 5 1
+    R8 712 3 8
+    R13 718 6 2
+    R0 721 12 7
+    R14 721 9 5
+    R18 722 8 7
+    R15 723 4 8
+    R14 730 5 11
+    R4 733 3 12
+    R13 738 2 4
+    R6 741 10 1
+    R10 741 10 1
+    R15 741 8 9
+    R19 743 7 2
+    R13 751 4 7
+    R3 752 6 1
+    R14 755 11 9
+    R4 758 12 2
+    R11 759 6 9
+    R5 762 11 9
+    R15 765 9 2
+    R19 770 2 6
+    R9 775 9 9
+    R12 777 9 12
+    R17 778 3 7
+    R0 780 7 3
+    R0 781 3 11
+    R18 785 7 1
+    R8 787 8 11
+    R6 788 1 11
+    R7 790 10 4
+    R19 791 6 7
+    R13 791 7 6
+    R2 792 1 1
+    R9 794 9 5
+    R10 800 1 10
+    R15 804 2 5
+    R12 807 12 1
+    R11 808 9 4
+    R5 809 9 5
+    R14 813 9 2
+    R1 819 9 11
+    R19 819 7 5
+    R16 822 9 4
+    R0 823 11 8
+    R17 828 7 2
+    R11 834 4 4
+    R8 834 11 11
+    R3 837 1 6
+    R5 839 5 4
+    R4 842 2 4
+    R2 844 1 11
+    R18 851 1 1
+    R15 854 5 8
+    R0 855 8 5
+    R6 857 11 11
+    R12 857 1 3
+    R9 858 5 11
+    R8 859 11 3
+    R10 863 10 5
+    R7 867 4 6
+    R5 869 4 6
+    R0 878 5 8
+    R6 879 11 12
+    R7 882 6 12
+    R17 883 2 10
+    R13 883 6 5
+    R8 885 3 11
+    R13 887 5 7
+    R15 888 8 6
+    R3 891 6 6
+    R6 898 12 10
+    R17 898 10 3
+    R3 899 6 5
+    R5 900 6 11
+    R18 901 1 9
+    R15 906 6 10
+    R19 907 5 12
+    R13 908 7 9
+    R11 914 4 5
+    R16 917 4 5
+    R8 924 11 11
+    R14 924 2 2
+    R0 926 8 9
+    R9 926 11 2
+    R2 935 11 7
+    R1 937 11 5
+    R10 940 5 8
+    R18 946 9 11
+    R19 946 12 4
+    R3 947 5 8
+    R8 947 11 4
+    R13 947 9 4
+    R12 948 3 4
+    R4 950 4 2
+    R9 951 2 9
+    R0 963 9 11
+    R17 973 3 3
+    R16 975 5 12
+    R18 977 11 12
+    R9 980 9 6
+    R13 980 4 9
+    R5 983 11 1
+    R3 983 8 11
+    R7 985 12 7
+    R14 985 2 8
+    R10 991 8 12
+    R19 991 4 6
+    R17 992 3 5
+    R0 993 11 6
+    R1 997 5 3
+## Bonus
+
+Which improves delivery efficiency most?
+
+* Longer linger times?
+* More cars?
+* Faster cars?
+
+## Code to generate rider input
+
+    import random
+
+    THRESH = 0.01
+    FLOORS = 12
+
+    class Rider(object):
+        """docstring for Rider"""
+        def __init__(self, name, floor):
+            self.name = name
+            self.rnd = random.Random()
+            self.floor = floor
+            self.thresh = 0.005
+
+        def move(self):
+            ret = self.rnd.random() <= self.thresh
+            if ret:
+                self.thresh = 0.001
+            else:
+                self.thresh += .0005
+            return ret        
+
+        def newfloor(self):
+            old, self.floor = self.floor, self.rnd.randint(1, FLOORS)
+            return '%s %s' % (old, self.floor)
+
+        def __repr__(self):
+            return '%s %%d %s' % (self.name, self.newfloor())
+
+        def __str__(self):
+            return self.__repr__()
+
+    def main():
+        riders = {}
+        for r in range(20):
+            riders['R%d' % r] = Rider('R%d' % r, 1)    
+
+        for t in range(1000):
+            for r in riders.values():
+                if r.move():
+                    print str(r).replace('%d', `t`)
+
+    main()
+
+
+# Title
+
+Golomb Rulers
+
+## Difficulty
+
+Hard
+
+## Description
+
+A typical ruler has many evenly spaced markings. For instance a standard 12” ruler has 13 marks along its edge, each spaced 1” apart. This is great, and allows the measurement all (integer) values of length between 1” and 12”.
+
+However, a standard ruler is grossly inefficient. For example, the distance of length 1” can be measured multiple ways on this ruler: 0 to 1, 1 to 2, 2 to 3, etc. 
+
+A mathematician named Solomon W. Golomb had an idea about making rulers more efficient, and rulers of this type are named after him. A Golomb ruler comprises a series of marks such that no two pairs of marks are the same distance apart. Below is an example. This ruler has markings that allow all integer distances between 1-6 units to be measured. Not only that, but each distance can be measured in only way way.
+
+    0 1     4    6
+    +-+-----+----+
+
+You can see how you can measure every integer distance between 1 and 6:
+
+      0 1     4    6
+      +-+-----+----+
+
+    1 +-+
+    2         +----+
+    3   +-----+
+    4 +-------+
+    5   +----------+
+    6 +------------+  
+
+Golomb rulers are described by their **order**, which is the number of marks on their edge. The example above is an order 4 ruler. The length of a Golomb ruler is the distance between the outer two marks and, obviously, represents the longest distance it can measure. The above example has a length of 6.
+
+There is no requirement that a Golomb ruler measures all distances up to their length – the only requirement is that each distance is only measured in one way. However, if a ruler does measure all distances, it is classified as a *perfect* Golomb ruler. The above example is a perfect Golumb ruler. Finally, a Golomb ruler is described as *optimal* if no shorter ruler of the same order exists.
+
+Today's challenge is to determine where to place the marks on an optimal *but not necessarily perfect) Golomb ruler when given its order. 
+
+## Input Description
+
+You'll be given a single integer on a line representing the optimal Golomb ruler order. Examples:
+
+    3
+    5
+
+## Output Description
+
+Your program should emit the length of the optimal Golomb ruler and the placement of the marks. Note that some have multiple solutions, so any or all of the solutions can be yielded. Examples:
+
+    3   3   0 1 3
+    5   11  0 1 4 9 11
+            0 2 7 8 11
+
+Here you can see that we have two solutions for a Golomb ruler of order five and length 11. 
+
+## Challenge Input
+
+    8
+    7
+    10
+    20
+    26
+
+## Challenge Output
+
+Beware the word wrap!
+
+    8   34  0 1 4 9 15 22 32 34
+    7   25  0 1 4 10 18 23 25
+            0 1 7 11 20 23 25
+            0 1 11 16 19 23 25
+            0 2 3 10 16 21 25
+            0 2 7 13 21 22 25
+    10  55  0 1 6 10 23 26 34 41 53 55
+    20  283 0 1 8 11 68 77 94 116 121 156 158 179 194 208 212 228 240 253 259 283
+    26  492 0 1 33 83 104 110 124 163 185 200 203 249 251 258 314 318 343 356 386 430 440 456 464 475 487 492
+
+http://datagenetics.com/blog/february22013/index.html
+
+# Title 
+
+Kakuro Solver
+
+## Difficulty
+
+Hard
+
+## Description
+
+Kakuro is a popular Japanese logic puzzle sometimes called a mathematical crossword. The objective of the puzzle is to insert a digit from 1 to 9 inclusive into each white cell such that the sum of the numbers in each entry matches the clue associated with it and that no digit is duplicated in any entry. It is that lack of duplication that makes creating Kakuro puzzles with unique solutions possible. Numbers in cells elsewhere in the grid may be reused.
+
+More background on Kakuro can be found on [Wikipedia](https://en.wikipedia.org/wiki/Kakuro). There's an [online version](http://www.kakuroconquest.com/) you can play as well. 
+
+## Input Description
+
+You'll be given a pair of integers showing you the number of columns and rows (respectively) for the game puzzle. Then you'll be given *col* + *row* lines with the sum and the cell identifiers as *col id* and *row number*. Example:
+
+    1 2
+    3 A1 A2
+
+This example means that the sum of two values in A1 and A2 should equal 3. 
+
+## Challenge Output
+
+Your program should emit the puzzle as a 2D grid of numbers, with columns as letters (e.g. A, B, C) and rows as numbers (1, 2, 3). Example:
+
+      A
+    1 1
+    2 2
+
+## Challenge Input
+
+This puzzle is a 2x3 matrix. Note that it has non-unique solutions.
+
+    2 3 
+    13 A1 A2 A3
+    8 B1 B2 B3
+    6 A1 B1
+    6 A2 B2
+    9 A3 B3
+
+## Challenge Output
+
+One possible solution for the above puzzle is
+
+      A  B 
+    1 5  1
+    2 2  4
+    3 6  3
+
+# Title
+
+Kanoodle Solver
+
+## Difficulty
+
+Hard
+
+## Description
+
+The game of Kanoodle provides 12 distinctly shaped pieces (triminoes, tetraminoes and pentaminoes) and asks the player to assemble them into a 5 by 11 rectangular grid. Furthermore they're shown in one column to aide your solution in reading them in.
+
+The pieces are (and they're given here made up with different letters to help you see them in place). Pieces may be rotated, flipped, etc to make them fit but you may not overlap them or leave any blank squares in the 5x11 grid. 
+
+     A
+     A
+    AA
+
+     B
+    BB
+    BB
+
+     C
+     C
+     C
+    CC
+
+     D
+     D
+    DD
+     D
+ 
+     E
+     E
+    EE
+    E
+
+    F
+    FF
+
+      G
+      G
+    GGG
+
+      H
+     HH
+    HH
+
+    I I
+    III
+
+    J
+    J
+    J
+    J
+
+    KK
+    KK
+
+     L
+    LLL
+     L
+ 
+A solution is found when: 
+
+- Every piece is used exactly once.
+- Every square in the grid is covered exactly once (no overlaps).
+
+## Note
+
+This is an instance of the exact cover problem. There's "Algorithm X" by Knuth for finding solutions to the exact cover problem. It's not particularly sophisticated; indeed Knuth refers to it as "a statement of the obvious trial-and-error approach."
+
+## Challenge Output
+
+The puzzle is to arrange all of the above tiles into a four sided figure with no gaps or overlaps. 
+
+Your program should be able to emit a solution to this challenge. Bonus points if you can discover all of them. It's helpful if you keep the pieces identified by their letters to indicate their uniqueness. 
+
+One solution is:
+
+    EEGGGJJJJII
+    AEEEGCDDDDI
+    AAALGCHHDII
+    BBLLLCFHHKK
+    BBBLCCFFHKK
+
+# Title
+
+KenKen Solver
+
+## Difficulty
+
+Hard
+
+## Description
+
+KenKen are trademarked names for a style of arithmetic and logic puzzle invented in 2004 by Japanese math teacher Tetsuya Miyamoto, who intended the puzzles to be an instruction-free method of training the brain. KenKen now appears in more than 200 newspapers in the United States and worldwide. 
+
+As in sudoku, the goal of each puzzle is to fill a grid with digits –– 1 through 4 for a 4x4 grid, 1 through 5 for a 5x5, etc. –– so that no digit appears more than once in any row or any column (a Latin square). Grids range in size from 3x3 to 9x9. Additionally, KenKen grids are divided into heavily outlined groups of cells –– often called “cages” –– and the numbers in the cells of each cage must produce a certain “target” number when combined using a specified mathematical operation (either addition, subtraction, multiplication or division). For example, a linear three-cell cage specifying addition and a target number of 6 in a 4x4 puzzle must be satisfied with the digits 1, 2, and 3. Digits may be repeated within a cage, as long as they are not in the same row or column. No operation is relevant for a single-cell cage: placing the "target" in the cell is the only possibility (thus being a "free space"). The target number and operation appear in the upper left-hand corner of the cage.
+
+Because we can't use the same layout that a printed KenKen board does, we will have to express the board in a lengthier fashion. The board layout will be given as row and column, with rows as numbers and columns as letters. A 6x6 board, therefore, looks like this:
+
+     A B C D E F G
+    1. . . . . . . 
+    2. . . . . . . 
+    3. . . . . . . 
+    4. . . . . . . 
+    5. . . . . . . 
+    6. . . . . . . 
+
+Cages will be described as the target value, the operator to use, and then the cells to include. For example, if the upper left corner's cage covered A1 and A2 and should combine using the addition operator to a sum of 11, we would write:
+
+    11 + A1 A2
+
+We will use standard ASCII notation for mathematical operators: `+`, `-`, `/`, `*`, and `=`. The equals sign basically says "this square is this value" - a gimme. 
+
+## Sample Input
+
+Describing the representative KenKen problem from [the Wikipedia KenKen page](https://en.wikipedia.org/wiki/KenKen) we have this as our input, describing a 6x6 grid:
+
+    6
+    11 + A1 A2
+    2 / B1 C1
+    20 * D1 D2
+    6 * E1 F1 F2 F3
+    3 - B2 C2
+    3 / E2 E3
+    240 * A3 A4 B3 B4
+    6 * C3 D3
+    6 * C3 C5
+    7 + D4 D5 E5
+    30 * E3 F4
+    6 * A5 B5 9 + F5 F6
+    8 + A6 B6 C6
+    2 / D6 E6
+
+## Sample Output
+
+Your program should emit the grid of numbers that satisfies the rules - yield the target value for each cage using the operator specified, and ensure that no number is repeated per column and row. From the above example you should get this solution:
+
+    5 6 3 4 1 2
+    6 1 4 5 2 3
+    4 5 2 3 6 1
+    3 4 1 2 5 6
+    2 3 6 1 4 5
+    1 2 5 6 3 4
+
+## Challenge Input
+
+    6
+    13 + A1 B2 B1 B2
+    180 * C1 D1 D2 E1
+    9 + F1 F2 F3
+    2 = C2
+    20 * E2 E3
+    15 + A3 A4 A5
+    6 * B3 C3
+    11 + C4 D3 D4 
+    3 = B4
+    9 + D5 E4 E5 F4
+    2 / B5 C5 
+    18 + D6 E6 F5 F6
+    8 + A6 B6 C6
+
+## Challenge Output
+
+You can see the result here: http://imgur.com/JHHt6Hg 
+
+    1 4 3 5 2 6
+    3 5 2 6 4 1
+    4 6 1 3 5 2
+    5 3 6 2 1 4
+    6 2 4 1 3 5
+    2 1 5 4 6 3
+
+# Title
+
+Museum Cameras
+
+## Difficulty
+
+Hard
+
+## Description
+
+You run a museum, and you have a small budget - but you have to protect the museum with cameras. Given some descriptions of rooms, can you organize the smallest number of cameras to view the whole room?
+
+Some assumptions and other factors for you to work with:
+
+* Cameras can't see around corners. 
+* You can only place cameras in corners.
+* Assume every camera has a field of view of 180 degrees, yielding a semicircular field of view. 
+* Assume every camera's field of view will be equal to the left and right of the line in the corner where the camera is placed; this line bisects the angle of the corner. The camera points away from the corner.
+* Assume every camera has an otherwise infinite view.
+
+## Input Description
+
+You'll be given a row with a single number *N* that tells you how many points to read. Then on the next line you'll be given *N* points in a Cartesian coordinate space to draw the bounding box of the museum room. For example:
+
+    3
+    (0,0) (3,6) (6,0)
+
+This translates to (pardon my ugly ASCII art) this triangle:
+
+           .                                       .
+                                                  / \
+                                =>               /   \
+                                                /     \
+                                               /       \
+                                              /         \
+    .             .                          .___________.
+
+## Output Description
+
+Your program should emit the position of the cameras needed to cover the area. From our example:
+
+    (0,0)
+
+That's one possible solution (for this one any of the corners would have worked). 
+
+If the shape has no solution, emit something like "The architect has no concept of security" because maybe they're collaborating with art theives. 
+
+## Challenge Input
+
+    4 
+    (0,0) (5,0) (5,6) (0,6)
+<!-- tsk -->
+    5
+    (0,0) (7,0) (7,3) (5,6) (0,6)
+<!-- tsk -->
+    13
+    (0,5) (2,8) (5,7) (9,6) (10,9) (13,10) (13,6) (17,6) (16,3) (13,1) (7,1) (5,3) (2,3)
+
+## Notes
+
+This is a classic computational geometry problem called the [Art Gallery Problem](https://en.wikipedia.org/wiki/Art_gallery_problem). For some ideas on calculating 2d visibility from a top down map, [click here](http://www.redblobgames.com/articles/visibility/) 
+
+
+# Title
+
+Bioinformatics 3: Predicting Protein Secondary Structures
+
+## Difficulty 
+
+Hard
+
+Wrapping up our bioinformatics theme with the third and final installment today. If you like these sorts of problems, I encourage you to check out Project Rosalind (their site seems back up): http://rosalind.info/
+
+## Description
+
+The Chou-Fasman method is an empirical technique for the prediction of secondary structures in proteins, originally developed in the 1970s by Peter Y. Chou and Gerald D. Fasman. The method is based on analyses of the relative frequencies of each amino acid in alpha helices, beta sheets, and turns based on known protein structures.  From these frequencies a set of probability parameters were derived for the appearance of each amino acid in each secondary structure type, and these parameters are used to predict the probability that a given sequence of amino acids would form a helix, a beta strand, or a turn in a protein. The method is at most about 50–60% accurate in identifying correct secondary structures, and is mostly of historical significance at this point (it's been updated by better methods). 
+
+The Chou-Fasman method predicts helices and strands in a similar fashion, first searching linearly through the sequence for a "nucleation" region of high helix or strand probability and then extending the region until a subsequent four-residue window carries a probability of less than 1. As originally described, four out of any six contiguous amino acids were sufficient to nucleate helix, and three out of any contiguous five were sufficient for a sheet. The probability thresholds for helix and strand nucleations are constant but not necessarily equal; originally 1.03 was set as the helix cutoff and 1.00 for the strand cutoff.
+
+You can find a table showing propensities for an amino acid to help form an alpha-helix or a beta-sheet at this link  http://employees.csbsju.edu/hjakubowski/classes/ch331/protstructure/tablechoufas.htm or this one http://prowl.rockefeller.edu/aainfo/chou.htm along with an algorithm description. 
+
+You can learn more about the Chou-Fasman method via Wikipedia - http://en.wikipedia.org/wiki/Chou%E2%80%93Fasman_method . Also, slide 17 of this deck describes the approach quite cleanly - http://www.slideshare.net/RoshanKarunarathna1/chou-fasman-algorithm-for-protein-structure .
+
+In this challenge you'll be given a protein sequence and asked to suggest its secondary structure. 
+
+## Input
+
+    MET LYS ILE ASP ALA ILE VAL GLY ARG ASN SER ALA LYS ASP ILE ARG THR GLU GLU ARG ALA ARG
+    VAL GLN LEU GLY ASN VAL VAL THR ALA ALA ALA LEU HIS GLY GLY ILE ARG ILE SER ASP GLN THR
+    THR ASN SER VAL GLU THR VAL VAL GLY LYS GLY GLU SER ARG VAL LEU ILE GLY ASN GLU TYR
+    GLY GLY LYS GLY PHE TRP ASP ASN HIS HIS HIS HIS HIS HIS 
+
+## Output
+
+Based on http://pdbj.org/mine/structural_details/2rnm 
+
+    MET LYS ILE ASP ALA ILE VAL GLY ARG ASN SER ALA LYS ASP ILE ARG THR GLU GLU ARG ALA ARG
+                                                B   B   B   B   B   B
+    VAL GLN LEU GLY ASN VAL VAL THR ALA ALA ALA LEU HIS GLY GLY ILE ARG ILE SER ASP GLN THR
+    B   B   B           B   B  
+    THR ASN SER VAL GLU THR VAL VAL GLY LYS GLY GLU SER ARG VAL LEU ILE GLY ASN GLU TYR
+    B   B   B   B   B   B   B   B   B                   B   B   B   B           B   B
+    GLY GLY LYS GLY PHE TRP ASP ASN HIS HIS HIS HIS HIS HIS 
+
+## Notes
+
+Other interesting proteins you could analyze include 1VPX or 1BKF, they'll give you some mixed structures. Use the European Protein Databank site (for example for 1VPX  http://www.ebi.ac.uk/pdbe-srv/view/entry/1vpx/secondary.html) to confirm your results. 
+
+If you have your own idea for a challenge, submit it to /r/DailyProgrammer_Ideas, and there's a good chance we'll post it.
+# Title 
+DNA and Protein Sequence Alignment
+
+## Difficulty 
+Hard
+
+## Description
+
+If you are studying a particular pair of genes or proteins, an important question is to what extent the two sequences are similar. To quantify similarity, it is necessary to align the two sequences, and then you can calculate a similarity score based on the alignment.
+
+There are two types of alignment in general. A global alignment is an alignment of the full length of two sequences, for example, of two protein sequences or of two DNA sequences. A local alignment is an alignment of part of one sequence to part of another sequence.
+
+Alignment treats the two inputs as a linear sequence to be lined up as much as possible, with optional gaps and conversions allowed. The goal is to minimize these differences. 
+
+The first step in computing a sequence alignment is to decide on a scoring system. For this exercise, we'll simplify this and give a score of +2 to a match and a penalty of -1 to a mismatch, and a penalty of -2 to a gap. 
+
+Here's a small example. Our two DNA sequences to align:
+
+    CTCTAGCATTAG
+    GTGCACCCA
+
+One sligmment might look like this:
+
+    CTCTAGCATTAG
+    GT---GCACCCA
+
+But that one adds three gaps. We can do a bit better with only one gap added (and a small shift in starting position):
+
+    CTCTAGCATTAG
+      GT-GCACCCA
+
+While not an exact match, it now minimizes the conversion penalties between the two and aligns them as best we can. 
+
+For more information and how to do this using an R package, see the chapter ["Pairwise Sequence Alignment"](http://a-little-book-of-r-for-bioinformatics.readthedocs.org/en/latest/src/chapter4.html), or [this set of lecture notes from George Washington University](http://www.seas.gwu.edu/~simhaweb/cs151/lectures/module12/align.html). The key algorithm is [Needleman-Wunsch](http://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm).
+
+For this challenge your task is to write a program that accepts two sequences and globally aligns them. If you want to make this harder and integrate the BLOSUM matrices, you may. 
+
+## Input Description
+
+You'll be given two sequences on two lines, one line per sequence. They'll be the same type of input, DNA or protein. 
+
+## Output Description
+
+Your program should emit the aligned sequences with gaps introduced represented by dashed ("-"). 
+
+## Challenge Input
+
+DNA example
+
+    ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTAC
+    ACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTACGTAC
+    
+Protein example
+
+    MTNRTLSREEIRKLDRDLRILVATNGTLTRVLNVVANEEIVVDIINQQLLDVAPKIPELENLKIGRILQRDILLKGQKSGILFVAAESLIVIDLLPTAITTYLTKTHHPIGEIMAASRIETYKEDAQVWIGDLPCWLADYGYWDLPKRAVGRRYRIIAGGQPVIITTEYFLRSVFQDTPREELDRCQYSNDIDTRSGDRFVLHGRVFKN
+    MLAVLPEKREMTECHLSDEEIRKLNRDLRILIATNGTLTRILNVLANDEIVVEIVKQQIQDAAPEMDGCDHSSIGRVLRRDIVLKGRRSGIPFVAAESFIAIDLLPPEIVASLLETHRPIGEVMAASCIETFKEEAKVWAGESPAWLELDRRRNLPPKVVGRQYRVIAEGRPVIIITEYFLRSVFEDNSREEPIRHQRSVGTSARSGRSICT
+
+## Challenge Output
+
+DNA example
+
+    ACGTACGTAC GTACGTACGT ACGTACGTAC GTACGTACGT ACGTACGTAC
+    ACGTACGTAC GTACGTACGT ----ACGTAC GTACGTACGT ACGTACGTAC
+    
+Protein example
+
+    MT-----NR--T---LSREEIRKLDRDLRILVATNGTLTRVLNVVANEEIVVDIINQQLLDVAPKIPELENLKIGRILQRDILLKGQKSGILFVAAESLIVIDLLPTAITTYLTKTHHPIGEIMAASRIETYKEDAQVWIGDLPCWLADYGYWDLPKRAVGRRYRIIAGGQPVIITTEYFLRSVFQDTPREELDRCQYSNDIDTRSGDRFVLHGRVFKN
+    MLAVLPEKREMTECHLSDEEIRKLNRDLRILIATNGTLTRILNVLANDEIVVEIVKQQIQDAAPEMDGCDHSSIGRVLRRDIVLKGRRSGIPFVAAESFIAIDLLPPEIVASLLETHRPIGEVMAASCIETFKEEAKVWAGESPAWLELDRRRNLPPKVVGRQYRVIAEGRPVIIITEYFLRSVFEDNSREEPIRHQRS--VGT-SA-R---SGRSICT
+
+## Notes
+
+Have a cool challenge idea? Post it to /r/DailyProgrammer_Ideas!
+
+# Title
+
+Redistricting Voting Blocks
+
+## Difficulty
+
+Hard
+
+## Description
+
+In the US, voting districts are drawn by state legislatures once every decade after the census is taken. In recent decades, these maps have become increasingly convoluted and have become hotly debated. One method proposed to address this is to insist that the maps be drawn using the "Shortest Splitline Algorithm" (see http://rangevoting.org/FastShortestSplitline.html for a description). The algorithm is basically a recursive count and divide process:
+
+1. Let N=A+B where A and B are as nearly equal whole numbers as possible, and N is the total population of the area to be divided.
+2. Among all possible dividing lines that split the state into two parts with population ratio A:B, choose the *shortest*.
+3. We now have two hemi-states, each to contain a specified number (namely A and B) of districts. Handle them recursively via the same splitting procedure.
+
+This has some relationship to Voronoi diagrams, for what it's worth. 
+
+In this challenge, we'll ask you to do just that: implement the SS algorithm with an ASCII art map. You'll be given a map and then asked to calculate the best splitlines that maximize equal populations per district. 
+
+For instance, if we have the following populations:
+
+	2 1
+	2 1
+
+And you were told you could make only 2 lines, a successfully dividied map would look like this:
+
+	2|1
+	-|
+	2|1
+
+This splits it into 3 distinct districts with 2 members each. 
+
+Note that lines needn't go all the way across the map, they can intersect with another line (e.g. you're not cutting up a pizza). Also, all of your districts needn't be *exactly* the same, but it should be the minimum number of differences globally for the map you have. 
+
+## Input Description
+
+You'll be given a line with 3 numbers. The first tells you how many lines to draw, the second tells you how many rows and columns to read. The next *N* lines are of the map, showing people per area. 
+
+## Output Description
+
+You should emit a map with the lines drawn, and a report containing how many people are in each district. 
+
+## Challenge Input
+
+	8 20 20 
+	8 0 6 1 0 4 0 0 8 8 8 2 4 8 5 3 4 8 7 4
+	5 7 0 3 6 1 0 7 1 1 1 1 2 5 6 4 5 1 5 0
+	3 0 5 8 8 7 6 5 1 4 3 1 2 6 0 4 7 5 1 5
+	1 7 2 0 4 6 1 6 2 2 0 3 3 5 6 8 7 4 4 0
+	6 7 6 7 0 6 1 3 6 8 0 2 0 4 0 3 6 1 0 7
+	8 6 7 6 5 8 5 5 5 2 0 3 6 1 4 2 8 2 7 0
+	0 6 0 6 5 8 1 2 7 6 3 1 0 3 0 4 0 1 0 5
+	5 5 7 4 3 0 0 5 0 0 8 1 1 8 7 2 8 0 0 8
+	2 4 0 5 6 7 0 5 6 3 8 1 2 5 3 3 1 8 3 7
+	0 7 6 6 2 8 3 4 6 8 4 6 2 5 7 0 3 1 2 1
+	0 3 6 4 0 4 0 6 0 3 4 8 2 3 3 8 0 6 1 0
+	7 2 6 5 4 5 8 6 4 4 1 1 2 3 1 0 0 8 0 0
+	6 7 3 6 2 6 5 0 2 7 7 2 7 0 4 0 0 6 3 6
+	8 0 0 5 0 0 1 4 2 6 7 1 7 8 1 6 2 7 0 0
+	8 4 7 1 7 5 6 2 5 2 8 5 7 7 8 2 3 1 5 7
+	7 2 8 1 1 0 1 0 1 3 8 7 7 5 2 6 3 0 5 5
+	1 2 0 1 6 6 0 4 6 7 0 5 0 0 5 5 7 0 7 7
+	7 7 3 6 0 1 5 8 5 8 7 0 0 0 4 0 2 1 3 4
+	4 3 0 6 5 1 0 6 2 0 6 5 5 7 8 2 0 4 3 4
+	4 1 0 4 6 0 6 4 3 2 2 6 2 2 7 3 6 3 0 4
+
+## Credit
+
+This challenge was suggested by user /u/Gigabyte. If you have any ideas for challenges, head on over to /r/dailyprogrammer_ideas and suggest them! If they're good, we might use them and award you a gold medal!
+
+# Title
+
+Eight Husbands for Eight Sisters
+
+## Difficulty
+
+Hard
+
+## Description
+
+For a set of men {*A,B,...,Z*} and a set of women {*a,b,...,z*} they have a preference table - *A* would prefer to marry *b*, but will be satisfied to marry *c*; *c* would prefer to marry *B*, will be OK to marry *C*, etc. Matches are considered *unstable* if there exists a pair who likes each other more than their spouses.  The challenge is then to construct a stable set of marriages given the preferences.
+
+The Gale-Shapely Theorem tells us that a stable marriage is always possible, and found in *O*( *n^2* ) time.
+
+## Formal Input Description
+
+You'll be given the individual (uppercase for men, lowercase for women) identifier first, then the identifiers for their preferences for each member of the set of men (uppercase letters) and women (given by lowercase letters). 
+
+## Formal Output Description
+
+You'll emit the list of pairs that satisfy the constraints.
+
+## Sample Input
+
+        A, b, c, a
+        B, b, a, c
+        C, c, a, b
+        a, C, B, A
+        b, A, C, B
+        c, A, C, B
+
+## Sample Output
+
+        (A; b)
+        (B; c)
+        (C; a)
+
+## Challenge Input
+
+        A, b, d, g, h, c, j, a, f, i, e
+        B, f, b, i, g, a, j, h, e, c, d
+        C, b, i, j, g, h, d, e, f, c, a
+        D, f, a, e, i, c, j, b, g, d, h
+        E, f, d, a, e, i, b, c, g, j, h
+        F, d, f, a, c, j, e, i, b, g, h
+        G, e, g, c, b, f, d, a, i, j, h
+        H, f, i, b, c, e, a, h, g, d, j
+        I, i, a, j, f, c, e, b, g, h, d
+        J, h, f, c, e, b, a, j, g, d, i
+        a, J, C, E, I, B, F, D, G, A, H
+        b, I, H, J, C, D, A, E, B, G, F
+        c, C, B, I, F, H, A, D, J, G, E
+        d, F, G, J, D, C, E, I, H, B, A
+        e, D, G, J, C, A, H, I, E, B, F
+        f, E, H, C, J, B, F, D, A, G, I
+        g, J, F, G, E, I, A, H, B, D, C
+        h, E, C, B, H, I, A, G, D, F, J
+        i, J, A, F, G, E, D, H, B, I, C
+        j, E, A, B, C, J, I, G, D, H, F
+
+## Challenge  Output 
+
+        (A; h)
+        (B; j
+        (C; b)
+        (D; e)
+        (F; d)
+        (G; g)
+        (H; i)
+        (I; a)
+
+
+
+# Title
+
+New York Street Sweeper Paths
+
+## Difficulty
+
+Hard
+
+## Description
+
+In graph theory, various walks and cycles occupy a number of theorems, lemmas, and papers. They have practical value, it turns out, in a wide variety of applications: computer networking and street sweepers among them. 
+
+For this challenge you're the commissioner of NYC street sweeping. You have to keep costs down and keep the streets clean, so you'll minimize the number of streets swept twice while respecting traffic directionality. The goal of this challenge is to visit all edges at least one while minimizing the number of streets swept to the bare minimum. 
+
+Can you find a route to give your drivers? 
+
+## Input Description
+
+Your program will be given two integers *h* and *w* on one line which tell you hot tall and wide the street map is. On the next line will be a single uppercase letter *n* telling you where to begin. Then the ASCII map will begin using the dimensions you were given *h*x*w*). Your tour should end the day at the starting point (*n*).
+
+You'll be given an ASCII art graph. Intersections will be named as uppercase letters `A`-`Z`. Streets will connect them. The streets may be bi-directional (`-` or `|`) or one-way (one of `^` for up only, `v` for down only, `<` for left only, and `>` for right only) and you may not violate the rules of the road as the commissioner by driving down a one way street the wrong way. Bi-directional streets (`-` or `|`) need only be visited in one direction, not both. You don't need to return to the starting point.
+
+## Output Description
+
+Your program should emit the intersections visited in order and the number of street segments you swept. 
+
+## Challenge Input
+
+	3 3
+	F 
+	A - B - C
+	|   |   v
+	D > E - F
+	^   v   v
+	G - H < I
+
+## Challenge Output
+
+The shortest walk of all streets at least once I've been able to come up with is `F-I-H-G-D-E-H-G-D-A-B-C-F-E-B`, but there may be shorter ones.
+
+## Notes
+
+http://en.wikipedia.org/wiki/Route_inspection_problem
+
+http://www.oocities.org/harry_robinson_testing/graph_theory.htm
+
+
+# Title
+
+Mission Impossible: Fooling the Anomaly Detector and Exfiltrating Data
+
+## Difficulty
+
+Hard
+
+## Description
+
+In data mining, anomaly detection (or outlier detection) is the identification of items, events or observations which do not conform to an expected pattern or other items in a dataset. In particular in the context of abuse and network intrusion detection, the interesting objects are often not rare objects, but unexpected bursts in activity. Usually these models are built on averages and look for outliers 3 standard deviations away; models are continually updated to account for the natural evolution of behaviors. 
+
+For example, you may have an e-commerce business that has day-of-week and hour-of-day models of transactions. If there's a significant drop or burst of activity, you know something's afoot. Similarly, if you walk outside and see a tremendous burst of traffic on the roads - perhaps a traffic jam at that point - when it's normally flowing smoothly with intermittent cars, then you know something is odd. 
+
+In this challenge, we're trying to throw off such an anomaly detector and cover our activity. We have a simplistic anomaly detector we're trying to bypass as we move sensitive corporate documents - the latest summer blockbuster about to be released - into the wild. Some points about the network we're attacking:
+
+* The *x* axis is your timeline
+* Values above the *y* axis are bytes leaving the network, below the *y* axis are bytes entering the network
+* The anomaly detection system is very simple and based only on the history seen so far
+* It's just starting out, and has no robust history
+* Alarm thresholds are measured in units of standard deviations
+* Calculate the volume of traffic sent by taking the area under the curve defined by the time series 
+
+Your mission, should you choose to accept it, is to maximize the rate of data exfiltration without triggering the anomaly detector. You can do this by sending and receiving data over the network to confuse the detector into thinking the traffic rates it sees are normal. 
+
+## Input Description
+
+You'll be given the anomaly detector informatio on the first line. The numers *S*, *T0* and *T1* telling you how many standard devitations the alarm is set for, and the first two data points as (+y, -y) coordinates. Example:
+
+    3 (100,-100) (200,-200)
+
+The next line will tell you how many bytes you have to target to exfiltrate. Example:
+
+    700000000
+
+In this case that's about 700MB. 
+
+## Output Description
+
+Your program should emit the time series of data you need to send and receive to keep your exfiltration mission a quiet secret (e.g. you didn't trip the anomaly detector). 
+
+## Challenge Input
+
+    3 (100,-50) (125,-65)
+    4000000000
+
+# Title
+
+Chess Solitaire
+
+## Difficulty
+
+Hard
+
+## Description
+
+Chess solitaire is a variant of chess that sets up puzzles using the pieces and a smaller board. You're given a set of several pieces all of one color, and using the legal moves of those pieces, you're supposed to take them one by one until only one piece is left. The rules state that every move has to be a legal move for that piece, and every move must be a capture of one piece by another. The challenge then is to figure out the right sequence of moves - what piece and what capture - that leads to only one piece left at the end.
+
+Some other differences with regular chess. Again: every move *must* be a capture. For the king, check doesn't matter. There is no "direction" or "forward", anyone can move (within their legal moves) in any direction. Pawns cannot promote, and pawns (as usual) take on the diagonal. 
+
+The board is 4x4, with rows are 1-4 and columns are a-d; the lower left is square a1, so the board looks like this:
+    
+    d . . . .
+    c . . . .
+    b . . . .
+    a . . . .
+      1 2 3 4
+
+The pieces are given by their single character:
+
+- R - rook
+- N - knight
+- B - bishop
+- Q - queen
+- K - king
+- P - pawn
+
+## Input Description
+
+You'll be given a 4x4 board in ASCII showing the opening board and the pieces positioned on the board. Blank squares are given by a ".". An example:
+
+    R . . R
+    . . P .
+    . N . . 
+    . . . .
+
+## Output Description
+
+You should give the sequence of moves needed to successfully clear the board to one piece using the rules by showing the start square (e.g. "a1") and the captured square (e.g. "b2") joined by an "x". For the above board, the solution would be:
+
+    d4xa4
+    b2xa4
+    a4xc3
+	
+Any piece can make the next move *as long as the move results in a legal capture*. It doen't have to be one piece snaking its way through the board.
+
+## Challenge Input
+
+    . N . .
+    . . B .
+    R . . .
+    . . . .
+
+    . . B .
+    R . . P
+    . R . .
+    . P B .
+
+    N . . .
+    B P . B
+    . . . N
+    R R P .
+	
+
+## Challenge Output
+
+In order of the above starting boards:
+
+    b4xa2
+    a2xc3
+
+    d3xc4
+    b2xc4
+    c1xa3
+    c4xa3
+    a3xb1
+
+    d2xb3
+    b1xb3
+    b3xd3
+    d3xa3
+    a3xa4
+    a4xa1
+    a1xc1
+
+# Title
+
+Calculate Graph Chromatic Number
+
+## Difficulty
+
+Hard
+
+## Description
+
+The [chromatic number](http://mathworld.wolfram.com/ChromaticNumber.html) of a graph G is the *smallest* number of colors needed to color the vertices of G so that no two adjacent vertices share the same color. 
+
+To color a given graph, their first step is to scour the graph for a structure called a “prism,” which consists of a pair of three-holes connected to each other via three paths.
+
+Chudnovsky and colleagues have been doing some neat work in this space, and recently [celebrated some breakthroughs](https://www.quantamagazine.org/20151020-perfect-graph-coloring/#st_refDomain=t.co&st_refQuery=/7ghlXNoW1b) in coloring real-world graphs. 
+
+An interesting application via [this page](http://www.geeksforgeeks.org/graph-coloring-applications/): *Akamai runs a network of thousands of servers and the servers are used to distribute content on Internet. They install a new software or update existing softwares pretty much every week. The update cannot be deployed on every server at the same time, because the server may have to be taken down for the install. Also, the update should not be done one at a time, because it will take a lot of time. There are sets of servers that cannot be taken down together, because they have certain critical functions. This is a typical scheduling application of graph coloring problem. It turned out that 8 colors were good enough to color the graph of 75000 nodes. So they could install updates in 8 passes.*
+
+Your challenge today is to implement an algorithm that calculates the chromatic number of an undirected graph. A useful link: [Graph Coloring](https://en.wikipedia.org/wiki/Graph_coloring) on Wikipedia. 
+
+## Input Description
+
+You'll be given a row with a two integers *n* and *m* on it telling you how many nodes (n) and how many edges (m) to parse. Then you'll be given the edges as two integers per line. Example:
+
+    10 15
+    0 1
+    0 4
+    0 5
+    1 2
+    1 6
+    2 3
+    2 7
+    3 8
+    3 4
+    4 9
+    5 8
+    5 7
+    6 8
+    6 9
+    7 9
+
+## Output Description
+
+Your program should emit the minimal chromatic number of the graph. The example graph above is the well known [Petersen graph (GP(5,2))](http://mathworld.wolfram.com/PetersenGraph.html). The example output would be:
+
+    3
+
+## Challenge Input
+
+    18 153
+    0 1
+    0 2
+    0 3
+    0 4
+    0 5
+    0 6
+    0 7
+    0 8
+    0 9
+    0 10
+    0 11
+    0 12
+    0 13
+    0 14
+    0 15
+    0 16
+    0 17
+    1 2
+    1 3
+    1 4
+    1 5
+    1 6
+    1 7
+    1 8
+    1 9
+    1 10
+    1 11
+    1 12
+    1 13
+    1 14
+    1 15
+    1 16
+    1 17
+    2 3
+    2 4
+    2 5
+    2 6
+    2 7
+    2 8
+    2 9
+    2 10
+    2 11
+    2 12
+    2 13
+    2 14
+    2 15
+    2 16
+    2 17
+    3 4
+    3 5
+    3 6
+    3 7
+    3 8
+    3 9
+    3 10
+    3 11
+    3 12
+    3 13
+    3 14
+    3 15
+    3 16
+    3 17
+    4 5
+    4 6
+    4 7
+    4 8
+    4 9
+    4 10
+    4 11
+    4 12
+    4 13
+    4 14
+    4 15
+    4 16
+    4 17
+    5 6
+    5 7
+    5 8
+    5 9
+    5 10
+    5 11
+    5 12
+    5 13
+    5 14
+    5 15
+    5 16
+    5 17
+    6 7
+    6 8
+    6 9
+    6 10
+    6 11
+    6 12
+    6 13
+    6 14
+    6 15
+    6 16
+    6 17
+    7 8
+    7 9
+    7 10
+    7 11
+    7 12
+    7 13
+    7 14
+    7 15
+    7 16
+    7 17
+    8 9
+    8 10
+    8 11
+    8 12
+    8 13
+    8 14
+    8 15
+    8 16
+    8 17
+    9 10
+    9 11
+    9 12
+    9 13
+    9 14
+    9 15
+    9 16
+    9 17
+    10 11
+    10 12
+    10 13
+    10 14
+    10 15
+    10 16
+    10 17
+    11 12
+    11 13
+    11 14
+    11 15
+    11 16
+    11 17
+    12 13
+    12 14
+    12 15
+    12 16
+    12 17
+    13 14
+    13 15
+    13 16
+    13 17
+    14 15
+    14 16
+    14 17
+    15 16
+    15 17
+    16 17
+
+## Challenge Output
+
+# Title
+
+Congruent Numbers
+
+## Difficulty
+
+Intermediate
+
+## Description
+
+In mathematics, a congruent number is a positive integer that is the area of a right triangle with three rational number sides. 6 is a congruent number because it is the area of a 3,4,5 triangle. The question of determining whether a given rational number is a congruent number is called the congruent number problem. 
+
+This problem has not (as of 2012) been brought to a successful resolution. Dr Dobb's Journal recently (2009) posted a ["Lousy Algorithm"](http://www.drdobbs.com/architecture-and-design/congruent-numbers-and-the-lousy-algorith/228701878) for finding most congruent numbers under 100. While not perfect, it illustrates a strategy for determining if a number is congruent. There's a great discussion on the [bit-player blog](http://bit-player.org/2009/congruent-numbers) discussing various strategies to solve this challenge. 
+
+Your challenge today is to determine if a given number is congruent or not. 
+
+## Input Description
+
+You'll be given an integer, one per line. Example:
+
+    23
+    12
+
+## Output Description
+
+Your program should emit if the number is congruent or not. Example:
+
+    23 CONGRUENT
+    12 NOT CONGRUENT
+
+## Challenge Input
+
+    6
+    14
+    44
+    46
+    29
+
+## Challenge Output
+
+    6 CONGRUENT
+    14 CONGRUENT
+    44 NOT CONGRUENT
+    46 CONGRUENT
+    29 CONGRUENT
+
+## Scala Solution
+
+    def pythagorean(a:Int, b:Int, c:Int) = (a*a + b*b) == (c*c)
+    def congruent(a:Int, b:Int, c:Int) = if (pythagorean(a,b,c)) { (a*b)/2 } else {-1}
+# Title
+
+DNA Shotgun Sequencing 
+
+## Difficulty
+
+Intermediate
+
+## Description
+
+DNA sequences are made up of a 4 character alphabet - A, C, T or G, that describe the nucleotide bases in a gene sequence. To ascertain the sequence of DNA, scientists use chemical methods to identify the component nucleotides in a method called DNA sequencing. DNA *shotgun* sequencing is a method whereby DNA subsequences of the same larger sequence are produced at massive parallel scale by DNA sequencing methods, and the overlap between segments is used to reconstruct the input gene. This is a fast and accurate method, and is dropping in price. Shotgun sequencing was used to perform the first entire sequence of a human's DNA, for example. For additional background information, see [Wikipedia on shotgun sequencing](http://en.wikipedia.org/wiki/Shotgun_sequencing). 
+
+You're working in a DNA laboratory and you have to reconstruct a gene's sequence from a series of fragments!
+
+## Formal Input Description
+
+You'll be given a series of DNA sequence fragments, which include overlaps with neighbor sequences, but not in any specific order - it's random. Your job is to read in the fragments and reconstruct the input DNA sequence that lead to the fragments. 
+
+## Formal Output Description
+
+Your program should emit the DNA sequence it calculated. 
+
+## Sample Input
+
+        tgca
+        taggcta
+        gtcatgcttaggcta
+        agcatgctgcag
+        tcatgct
+
+## Sample Output
+
+        agcatgctgcagtcatgcttaggcta
+
+## Challenge Input
+
+        gatccatctggatcctatagttcatggaaagccgctgc
+        tatttcaacattaattgttggttttgatacagatggtacacca
+        aaaagaaattcaaaaagaacaagaaaaatctgaaaaacaacaaaa
+        ggaatgtcaatcctatagattaactgttgaagattcaccatcagttg
+        tggaaataaaaatattgaaattgcagtcattagaaataaacaac
+        tcaagtagaatatgccatggaagcagtaagaaaaggtactgttg
+        tgcaagatcaattagaaaaatcgttaaattagatgaccacatt
+        tgtcgttgaagctgaaaaagaaattcaaaaagaacaagaaaaatct
+        gaaaaacaacaaaaataaattacatcaaattccttttttt
+        caatcgttttattagatgaacaagaaattgataaattagttgc
+        aatctttatcaaactgatccatctggatcctatagttcatg
+        gaaattgcagtcattagaaataaacaaccaatcgttttattagatg
+        atcgttaaattagatgaccacatttgtttaacctttgctggt
+        aattatacagacgttagtgaagaggaatcaattaaattagcagtta
+        tatactcaaagtggtggtgttagaccatttggtatttcaacattaat
+        ttttaggtgttgaaaagaaagcaaccgctaaacttcaaga
+        aagaaagcaaccgctaaacttcaagatgcaagatcaattagaaaa
+        ccccacctttttttttaattatcttcaagtttttttaaaaaaaaaaaaaaaa
+        gaatttttagaaaagaattatacagacgttagtgaagaggaatc
+        agtgcaagatacgatagagcaattacagttttctcaccagatg
+        aattaaattagcagttagagctttattagagattgttgaaag
+        cagttggtgtacgtggtaaagatgttattgttttaggtgttgaa
+        ttcaacaacgttatactcaaagtggtggtgttagaccatttgg
+        ataaattacatcaaattcctttttttccccacctttttttt
+        aattggtcgtagttcaaagagtgttggtgaatttttagaaaag
+        aatatatttctaaatttattgctggtattcaacaacgt
+        aacaagaaattgataaattagttgctgtcgttgaagctga
+        gagctttattagagattgttgaaagtggaaataaaaatatt
+        ttaactgccgattcacgtgtattaattagtaaagcattaat
+        acgatagagcaattacagttttctcaccagatggtcatctttt
+        aaggtactgttgcagttggtgtacgtggtaaagatgttattg
+        tgtttaacctttgctggtttaactgccgattcacgtgtattaatt
+        aataatataatatatatataaatacataataatgtcaagtgcaagat
+        agtaaagcattaatggaatgtcaatcctatagattaactgt
+        tgaagattcaccatcagttgaatatatttctaaatttattgctggta
+        gaaagccgctgcaattggtcgtagttcaaagagtgttggt
+        gtcatctttttcaagtagaatatgccatggaagcagtaagaa
+        tgttggttttgatacagatggtacaccaaatctttatcaaact
+
+
+## Challenge Input Solution
+
+        aataatataatatatatataaatacataataatgtcaagtgcaagatacgatagagcaattacagttttctcaccagatggtcatctttttcaagtagaatatgccatggaagcagtaagaaaaggtactgttgcagttggtgtacgtggtaaagatgttattgttttaggtgttgaaaagaaagcaaccgctaaacttcaagatgcaagatcaattagaaaaatcgttaaattagatgaccacatttgtttaacctttgctggtttaactgccgattcacgtgtattaattagtaaagcattaatggaatgtcaatcctatagattaactgttgaagattcaccatcagttgaatatatttctaaatttattgctggtattcaacaacgttatactcaaagtggtggtgttagaccatttggtatttcaacattaattgttggttttgatacagatggtacaccaaatctttatcaaactgatccatctggatcctatagttcatggaaagccgctgcaattggtcgtagttcaaagagtgttggtgaatttttagaaaagaattatacagacgttagtgaagaggaatcaattaaattagcagttagagctttattagagattgttgaaagtggaaataaaaatattgaaattgcagtcattagaaataaacaaccaatcgttttattagatgaacaagaaattgataaattagttgctgtcgttgaagctgaaaaagaaattcaaaaagaacaagaaaaatctgaaaaacaacaaaaataaattacatcaaattcctttttttccccacctttttttttaattatcttcaagtttttttaaaaaaaaaaaaaaaa
+
+## Credit
+
+This same idea - shortest common superstring - was also suggested by /u/202halffound, many thanks! If you have your own idea for a challenge, submit it to /r/DailyProgrammer_Ideas, and there's a good chance we'll post it.
+
+# Title
+
+Finding Friends in the Social Graph
+
+## Difficulty
+
+Hard
+
+## Description
+
+In all of our communities, we have a strong core of friends and people on the periphery of that core, e.g. people that we know that not everyone in that strong core knows. We're all familiar with these sorts of groups with the proliferation of Facebook and the like. 
+
+These networks can be used for all sorts of things, such as recommender systems or detecting collusion. 
+
+Given a social network graph identifying friendships, can you identify the largest strong group of friends who all know eachother and are connected? 
+
+## Input Description
+
+On the first line you'll be given a single integer *N* telling you how many distinct nodes are in the graph. Then you'll be given a list of edges between nodes (it's an undirected graph, so assume if you see *a b* that *a* knows *b* and *b* knows *a*). Example:
+
+    7
+    1 2
+    1 3
+    2 3
+    1 4
+    1 6
+    2 5
+    2 7
+    3 4
+    3 5
+    4 5 
+    4 7
+    4 6
+    5 6
+    5 7
+    6 7
+
+## Output Description
+
+Your program should emit a list of all of the members of the largest group of friends. Example:
+
+    4 5 6 7
+
+If the graph has multiple, distinct friend groups of the same size, you can print all or any of them. 
+
+## Challenge Input
+
+About this data set, it's kind of interesting. I downloaded it from here http://networkrepository.com/soc.php .
+
+    % The graph dolphins contains an undirected social network of frequent       
+    % associations between 62 dolphins in a community living off Doubtful Sound, 
+    % New Zealand, as compiled by Lusseau et al. (2003).  Please cite            
+    %                                                                            
+    %   D. Lusseau, K. Schneider, O. J. Boisseau, P. Haase, E. Slooten, and      
+    %   S. M. Dawson, The bottlenose dolphin community of Doubtful Sound features
+    %   a large proportion of long-lasting associations, Behavioral Ecology and  
+    %   Sociobiology 54, 396-405 (2003).                                         
+    %                                                                            
+    % Additional information on the network can be found in                      
+    %                                                                            
+    %   D. Lusseau, The emergent properties of a dolphin social network,         
+    %   Proc. R. Soc. London B (suppl.) 270, S186-S188 (2003).                   
+    %                                                                            
+    %   D. Lusseau, Evidence for social role in a dolphin social network,        
+    %   Preprint q-bio/0607048 (http://arxiv.org/abs/q-bio.PE/0607048)
+
+And here's the data set. 
+
+    62
+    11 1
+    15 1
+    16 1
+    41 1
+    43 1
+    48 1
+    18 2
+    20 2
+    27 2
+    28 2
+    29 2
+    37 2
+    42 2
+    55 2
+    11 3
+    43 3
+    45 3
+    62 3
+    9 4
+    15 4
+    60 4
+    52 5
+    10 6
+    14 6
+    57 6
+    58 6
+    10 7
+    14 7
+    18 7
+    55 7
+    57 7
+    58 7
+    20 8
+    28 8
+    31 8
+    41 8
+    55 8
+    21 9
+    29 9
+    38 9
+    46 9
+    60 9
+    14 10
+    18 10
+    33 10
+    42 10
+    58 10
+    30 11
+    43 11
+    48 11
+    52 12
+    34 13
+    18 14
+    33 14
+    42 14
+    55 14
+    58 14
+    17 15
+    25 15
+    34 15
+    35 15
+    38 15
+    39 15
+    41 15
+    44 15
+    51 15
+    53 15
+    19 16
+    25 16
+    41 16
+    46 16
+    56 16
+    60 16
+    21 17
+    34 17
+    38 17
+    39 17
+    51 17
+    23 18
+    26 18
+    28 18
+    32 18
+    58 18
+    21 19
+    22 19
+    25 19
+    30 19
+    46 19
+    52 19
+    31 20
+    55 20
+    29 21
+    37 21
+    39 21
+    45 21
+    48 21
+    51 21
+    30 22
+    34 22
+    38 22
+    46 22
+    52 22
+    37 24
+    46 24
+    52 24
+    30 25
+    46 25
+    52 25
+    27 26
+    28 26
+    28 27
+    31 29
+    48 29
+    36 30
+    44 30
+    46 30
+    52 30
+    53 30
+    43 31
+    48 31
+    61 33
+    35 34
+    38 34
+    39 34
+    41 34
+    44 34
+    51 34
+    38 35
+    45 35
+    50 35
+    38 37
+    40 37
+    41 37
+    60 37
+    41 38
+    44 38
+    46 38
+    62 38
+    44 39
+    45 39
+    53 39
+    59 39
+    58 40
+    53 41
+    55 42
+    58 42
+    48 43
+    51 43
+    47 44
+    54 44
+    51 46
+    52 46
+    60 46
+    50 47
+    58 49
+    52 51
+    56 52
+    62 54
+    58 55
+
+## Challenge Output
+
+This challenge has 3 distinct sets of 5 friends. Any or all of the below will count.
+    
+    18 10 14 58 7
+    30 19 46 52 22
+    30 19 46 52 25
+# Title
+
+Drainage Ditches
+
+## Difficulty
+
+Hard
+
+## Description
+
+Every time it rains on Farmer John's fields, a pond forms over Bessie's favorite clover patch. This means that the clover is covered by water for awhile and takes quite a long time to regrow. Thus, Farmer John has built a set of drainage ditches so that Bessie's clover patch is never covered in water. Instead, the water is drained to a nearby stream. Being an ace engineer, Farmer John has also installed regulators at the beginning of each ditch, so he can control at what rate water flows into that ditch. 
+
+Farmer John knows not only how many gallons of water each ditch can transport per minute but also the exact layout of the ditches, which feed out of the pond and into each other and stream in a potentially complex network. 
+
+Given all this information, determine the maximum rate at which water can be transported out of the pond and into the stream. For any given ditch, water flows in only one direction, but there might be a way that water can flow in a circle. 
+
+## Input Description
+
+You'll be given two integers on the first line, *N* and *M*. *N* tells you how many intersections for *M* number of ditches.  The next *N* lines will inform you of the flow points (from *x* to *y*) and the capacity. 
+
+## Output Description
+
+Your program should emit the maxiumum flow rate as the pond drains. 
+
+## Challenge Input
+
+    5 4
+    1 2 40
+    1 4 20
+    2 4 20
+    2 3 30
+    3 4 10
+
+## Challenge Output
+
+    50
+
+via http://poj.org/problem?id=1273
+# Title
+
+Buying Groceries
+
+## Difficulty
+
+Hard
+
+## Description
+
+You walk into a grocery store with some money in your wallet, a target amount of food to buy, and one bag with a finite capcity. Identify what you can buy under those conditions. You have to buy at least a quarter pound of any one thing.
+
+## Input Description
+
+You'll be given a row with three numbers on it representing the bag capacity in pounds, your budget in dollars, and the target calorie count for the week. Then you'll be given a series of items showing the item, its calories per pound and its price per pound. Example:
+
+    10 100.00 14000
+    Ham 600 9.00
+
+This translates to a bag that can hold ten pounds, a $100 bill in your wallet, and a target alorie count of 14000 for the week (seven * 2000). Second, you can buy some ham for $9 a pound and get 600 calories per pound. 
+
+All foods *should* be one word, hopefully cut and paste didn't foul that up.
+
+## Output Description
+
+Your program should emit one or more solutions for the shopping trip.
+
+## Challenge Input
+
+    10 100.00 14000
+    Ham 650 8.50
+    Lettuce 70 0.75
+    Cheese 1670 6.00
+    Tuna 830 20.00
+    Bread 1300 1.20
+    Eggs 200 4.25
+    Milk 130 4.00
+    Yogurt 475 3.75
+    Sugar 936 2.00
+    Oil 3200 3.50
+    Cereal 700 5.25
+    Chicken 500 3.00
+    Raisins 1776 5.00
+    Bananas 160 1.10
+    Grapes 90 4.00
+    Mango 85 1.25
+    Cherries 80 6.00
+    Pears 68 4.00
+    Apples 55 3.00
+    Pineapple 51 4.00
+    Oranges 48 6.00
+    Plums 43 6.00
+    OrangeJuice 41 4.50
+    Grapefruit 39 3.00
+    Berries 37 2.50
+    Papaya 30 2.75
+    Peaches 30 2.25
+    Honeydew 26 3.00
+    Cantaloupe 23 3.00
+    Strawberries 20 2.75
+    Watermelon 18 1.75
+
+stolen from http://www.jasq.org/just-another-scala-quant/new-agey-interviews-at-the-grocery-startup
+
+# Title
+
+Integer Sequence Search Part 2
+
+## Difficulty
+
+Hard
+
+## Description
+
+This is part 2 of the Integer sequence search functionality. An integer sequence is a sequence (i.e., an ordered list) of integers. 
+
+Not all sequences are computable (e.g. not all have a formula that can express them), but many do. 
+
+For this challenge you'll be searching sequences expressed as a recurrence relation. We did recurrence relations as a [previous exercise #206E](http://www.reddit.com/r/dailyprogrammer/comments/2z68di/20150316_challenge_206_easy_recurrence_relations/).
+
+## Input Description
+
+You'll be given two integers, *N* and *M*, which tell you how many sequences to read to form your database and then how many search queries to process, respectively. Then you'll be given the database as *N* pairs of *name* and *recurrence relation* pair. Starting conditions will be given following the "with" keyword. Then you'll be given *M* queries of a series of integers. Some notes:
+
+* All sequences to search will be contiguous (no gaps). 
+* Not all sequences you will be searching for will start at the beginning. 
+* The overlap of the query and the sequence database will be unambiguous but is not guaranteed to overlap completely. 
+* Sequence names will use the OEIS naming convention.
+
+Recurrence relations will be given as a relationship of numbers in the sequence and the starting conditions. 
+
+Example:
+
+	1 1
+	A000045 F(n) = F(n-1)+F(n-2) with F(0)=0, F(1)=1
+ 	0, 1, 1, 2, 3, 5, 8, 13 
+
+## Output Description
+
+Your program should emit the sequence and its OEIS identifier. Use the identifier "NOTFOUND" for those not in the database. Example:
+
+	0, 1, 1, 2, 3, 5, 8, 13 A000045
+
+## Challenge Input
+
+	5 6
+	A000045 F(n) = F(n-1)+F(n-2) with F(0)=0, F(1)=1
+	A000931	F(n) = F(n-2)+F(n-3) with F(0)=1, F(1)=0, F(2)=0
+	A001608	F(n) = F(n-2)+F(n-3) with F(0)=3, F(1)=0, F(2)=2
+	A000032	F(n) = F(n-1)+F(n-2)
+	A001608	F(n) = F(n-2)+F(n-3) with F(0)=3, F(1)=0, F(2)=2
+	0, 1, 1, 2, 3, 5, 8, 13 	
+	1, 0, 1, 1, 1, 2, 2, 3, 4, 5 
+	3, 0, 2, 3, 2, 5, 5, 7, 10, 12 
+	2, 1, 3, 4, 7, 11, 18, 29, 47, 76 
+	3, 0, 2, 3, 2, 5, 5, 7, 10, 12, 17 	
+	1, 1, 5, 5, 45, 95, 465, 1165 
+
+## Challenge Output
+
+	0, 1, 1, 2, 3, 5, 8, 13 A000045	
+	1, 0, 1, 1, 1, 2, 2, 3, 4, 5 A000931
+	3, 0, 2, 3, 2, 5, 5, 7, 10, 12 A001608
+	2, 1, 3, 4, 7, 11, 18, 29, 47. 76 A000032
+	3, 0, 2, 3, 2, 5, 5, 7, 10, 12, 17 A001608	
+	1, 1, 5, 5, 45, 95, 465, 1165 NOTFOUND
+
+# Title
+
+Severing the Power Grid
+
+## Difficulty
+
+Hard
+
+## Description
+
+In energy production, the power grid is a a large directed graph of energy consumers and producers. At times you need to cut at certain nodes and trim demand because you cannot supply enough of a load. 
+
+In DailyProgrammeropolis, all buildings are connected to the grid and all consume power to varying degrees. Some generate power because they have installed on-site generation and sell the excess to the grid, some do not.
+
+The scenario you're facing is this: due to a fault with the bulk power generation facility not local to DailyProgrammerololis, you must trim the power grid. You have connectivity data, and power consumption and production data. Your goal with this challenge is to **maximize the number of powered nodes with the generated energy you have**. Note that when you cut off a node, you run the risk the downstream ones will loose power, too, if they are no longer connected. This is how you'll shed demand, by selectively cutting the graph. You can make as many cuts as you want (there is no restriction on this). 
+
+## Input Description
+
+You'll be given an extensive set of data for this challenge. The first set of data looks like this: you'll be given a single integer on one line telling you how many nodes to read. Then you'll be given those nodes, one per line, with the node ID, the amount of power it consumes in kWH, then how much the node generates in kWH. Not all nodes produce electricity, but some do (e.g. a wind farm, solar cells, etc), and there is obviously one that generates the most - that's your main power plant.
+
+The next set of data is the edge data. The first line is how many edges to read, then the next *N* lines have data showing how the nodes are connected (e.g. power flows from node a to b). 
+
+Example:
+
+    3
+    0 40.926 0.0
+    1 36.812 1.552
+    2 1.007 0.0
+    2
+    0 1
+    0 2
+
+## Challenge Input
+
+    101
+    0 1.926 0.0
+    1 36.812 0.0
+    2 1.007 0.0
+    3 6.812 0.0
+    4 1.589 0.0
+    5 1.002 0.0
+    6 1.531 0.0
+    7 2.810 0.0
+    8 1.246 0.0
+    9 5.816 0.0
+    10 1.167 0.0
+    11 1.357 0.0
+    12 1.585 0.0
+    13 1.117 0.0
+    14 3.110 1.553
+    15 2.743 0.0
+    16 1.282 0.0
+    17 1.154 0.0
+    18 1.160 0.0
+    19 1.253 0.0
+    20 1.086 0.0
+    21 1.148 0.0
+    22 1.357 0.0
+    23 2.161 0.0
+    24 1.260 0.0
+    25 2.241 0.0
+    26 2.970 0.0
+    27 6.972 0.0
+    28 2.443 0.0
+    29 1.255 0.0
+    30 1.844 0.0
+    31 2.503 0.0
+    32 1.054 0.0
+    33 1.368 0.0
+    34 1.011 1.601
+    35 1.432 0.0
+    36 1.061 1.452
+    37 1.432 0.0
+    38 2.011 0.0
+    39 1.232 0.0
+    40 1.767 0.0
+    41 1.590 0.0
+    42 2.453 0.0
+    43 1.972 0.0
+    44 1.445 0.0
+    45 1.197 0.0
+    46 2.497 0.0
+    47 3.510 0.0
+    48 12.510 0.0
+    49 3.237 0.0
+    50 1.287 0.0
+    51 1.613 0.0
+    52 1.776 0.0
+    53 2.013 0.0
+    54 1.079 0.0
+    55 1.345 1.230
+    56 1.613 0.0
+    57 2.243 0.0
+    58 1.209 0.0
+    59 1.429 0.0
+    60 7.709 0.0
+    61 1.282 8.371
+    62 1.036 0.0
+    63 1.086 0.0
+    64 1.087 0.0
+    65 1.000 0.0
+    66 1.140 0.0
+    67 1.210 0.0
+    68 1.080 0.0
+    69 1.087 0.0
+    70 1.399 0.0
+    71 2.681 0.0
+    72 1.693 0.0
+    73 1.266 0.0
+    74 1.234 0.0
+    75 2.755 0.0
+    76 2.173 0.0
+    77 1.093 0.0
+    78 1.005 0.0
+    79 1.420 0.0
+    80 1.135 0.0
+    81 1.101 0.0
+    82 1.187 1.668
+    83 2.334 0.0
+    84 2.054 3.447
+    85 1.711 0.0
+    86 2.083 0.0
+    87 2.724 0.0
+    88 1.654 0.0
+    89 1.608 0.0
+    90 1.033 17.707
+    91 1.017 0.0
+    92 1.528 0.0
+    93 1.278 0.0
+    94 1.128 0.0
+    95 1.508 1.149
+    96 5.123 0.0
+    97 2.000 0.0
+    98 1.426 0.0
+    99 1.802 0.0
+    100 2.995 98.606
+
+Edge data is too much to put up here. You can download it here: https://github.com/paralax/ColossalOpera/blob/master/hard/microgrid_edges.txt
+
+## Node data generation (Python)
+
+    import random
+
+    ALPHA=3
+    CHANCE=0.05
+
+    r2 = ALPHA
+    for i in xrange(100):
+        r1 = random.paretovariate(r2)
+        r2 = random.paretovariate(r1)
+        if random.random() < CHANCE:
+            print "%s %.3f %.3f" % (i, r1, r2)
+        else:
+            print "%s %.3f 0.0" % (i, r1)
+
+## Edge data generation (Python)
+
+via http://stackoverflow.com/questions/13543069/how-to-create-random-single-source-random-acyclic-directed-graphs-with-negative
+
+    import networkx as nx
+    import random
+
+    G=nx.gnp_random_graph(101,0.12,directed=True)
+    DAG = nx.DiGraph([(u,v,{'weight':random.randint(-10,10)}) for (u,v) in G.edges() if u>v])
+    with open('/tmp/edges', 'w') as f:
+        for k,v in DAG.edges():
+            f.write("%s %s\n" % (k,v))
+
+# Title
+
+Nonogram Solver
+
+## Difficulty
+
+Hard
+
+## Tags
+
+Nonogram, solver, puzzle, np-complete
+
+## Description
+
+Nonograms are picture logic puzzles in which cells in a grid must be colored or left blank according to numbers at the side of the grid to reveal a hidden picture. In this puzzle type, the numbers are a form of discrete tomography that measures how many unbroken lines of filled-in squares there are in any given row or column. For example, a clue of "4 8 3" would mean there are sets of four, eight, and three filled squares, in that order, with at least one blank square between successive groups.
+
+The puzzles were invented in 1987 when Non Ishida, a Japanese graphics editor, won a competition in Tokyo by designing grid pictures using skyscraper lights that were turned on or off. Coincidentally, a professional Japanese puzzler named Tetsuya Nishio invented the same puzzles.
+
+To solve a puzzle, one needs to determine which cells will be boxes and which will be empty. Determining which cells are to be left empty (called spaces) is as important as determining which to fill (called boxes). Later in the solving process, the spaces help determine where a clue (continuing block of boxes and a number in the legend) may spread. Simpler puzzles can usually be solved by a reasoning on a single row only (or a single column) at each given time, to determine as many boxes and spaces on that row as possible. Then trying another row (or column), until there are no rows that contain undetermined cells.
+
+For more on Nonograms, see [Wikipedia](https://en.wikipedia.org/wiki/Nonogram). This challenge was inspired by a [blog post on the December 2015 GCHQ puzzle challenge](http://neilmitchell.blogspot.com/2015/12/solving-gchq-puzzle-by-hand.html). 
+
+## Example Input
+
+You'll be given a line with two integers telling you how many rows and columns (*n* x *m*) the puzzle contains. Then you'll be given the columns as numbers and the rows as numbers, along with the grid as dots `.` arranged in an *n* x *m* grid. Example showing a 4x4 grid:
+
+    4 4    
+          1 1  
+        3 1 1 2 
+      4 . . . .
+    1 1 . . . .
+      2 . . . .
+      1 . . . .
+
+## Example Output
+
+Your program should emit a solution with the shaded cells marked with a pound sign `#`. Example:
+
+    # # # #
+    # . . #
+    # # . .
+    . . # .
+
+## Challenge Input
+
+    10 10
+        4 6 8 8 8 8 8 8 6 4
+    1 1 . . . . . . . . . .
+    3 3 . . . . . . . . . .
+     10 . . . . . . . . . .
+     10 . . . . . . . . . .
+     10 . . . . . . . . . .
+     10 . . . . . . . . . .
+      8 . . . . . . . . . .
+      6 . . . . . . . . . .
+      4 . . . . . . . . . .
+      2 . . . . . . . . . .
+
+## Challenge Output
+
+    ..#....#..
+    .###..###.
+    ##########
+    ##########
+    ##########
+    ##########
+    .########.
+    ..######..
+    ...####...
+    ....##....
+
+(Yeah, this one was for fun.)
+
+# Title
+
+Number Grid Puzzles
+
+## Difficulty
+
+Hard
+
+## Description
+
+Imagine a grid of numbers, not unlike soduku. Your task is to place digits in them following some rules, but then it gets different than soduku. First, each row and column of the grid forms a multi-digit number. Second, each of those numbers must meet some specific properties. 
+
+Today's challenge is to play those games. 
+
+## Input Description
+
+You'll be given the description of the puzzle on the first two lines. The first line of input has the size of the grid as *x* * *y*. The second line tells you what digits are available. Then the next x*y numbers tell you the row and column constraints. The language will be regular. Descriptions will be "col" or "row" for column or row, respectively, and then the number. Then the constrains of the row or column will be given. Choices will include "prime", "cube", or "multiple of N" where N is an integer. Example:
+
+    2 2 
+    1 2 3 4
+    row 1 prime
+    row 2 multiple of 8
+    col 1 prime
+    col 2 multiple of 4
+
+## Output Description
+
+Your program should emit a valid solution to the puzzle. From the above example:
+
+    4 1
+    3 2
+
+This one works because both `41` and `43` are primes, `12` is a multiple of 4 and `32` is a multiple of 8. 
+
+## Challenge Input
+
+    3 3
+    1 2 3 4 5 6 7 8 9
+    row 1 even
+    row 2 prime
+    row 3 cube
+    col 1 prime
+    col 2 cube
+    col 3 prime
+
+    2 2
+    1 3 5 7 
+    row 1 prime
+    row 2 prime
+    col 1 prime
+    col 2 prime
+
+## Challenge Output
+
+    4 5 8 
+    6 1 3
+    7 2 9
+
+    NO SOLUTION
+
+From http://chalkdustmagazine.com/regulars/puzzles/puzzles-on-square-grids/#more-1396 
+
+# Title
+
+Pairs of Musical Artists
+
+## Difficulty
+
+Hard
+
+## Description
+
+Like many of you, I've more or less ditched my MP3 collection in favor of streaming services. I have tons of playlist sfor every setting (work, play, etc). A lot of these services use the co-occurrence of entries to make suggestions. 
+
+For this challenge, you'll look at playlist artists and try and identify co-occurrence of artists, which may be useful for a recommender system. 
+
+## Input Description
+
+You'll be given a set of 1000 rows, with each row a unique playlist and the artists from their playlists separated by commas. For example:
+
+    Radiohead,Pulp,Morrissey,Delays,Stereophonics,Blur,Suede,Sleeper,The La's,Super Furry Animals
+    Band of Horses,Iggy Pop,The Velvet Underground,Radiohead,The Decemberists,Morrissey,Television etc.
+
+## Output Description
+
+Your program should emit the list of musical artists who appear together in at least fifty (50) different playlists. From the above example:
+
+    Radiohead + Morrissey
+
+## Challenge Input
+
+The data is available via Github here: https://gist.github.com/paralax/f2bba6dbe1aa51693ba1 
+
+
+## Notes
+
+Shamelessly stolen from https://github.com/sming/Shapeways via http://www.reddit.com/r/compsci/comments/39orbc/i_failed_a_code_test_how_would_you_solve_this/ 
+# Title
+
+Text Summarizer
+
+## Difficulty
+
+Hard
+
+## Description
+
+Automatic summarization is the process of reducing a text document with a computer program in order to create a summary that retains the most important points of the original document. A number of algorithms have been developed, with the simplest being one that parses the text, finds the most unique (or important) words, and then finds a sentence or two that contains the most number of the most important words discovered. This is sometimes called "extraction-based summarization" because you are extracting a sentence that conveys the summary of the text. 
+
+For your challenge, you should write an implementation of a text summarizer that can take a block of text (e.g. a paragraph) and emit a one or two sentence summarization of it. You can use a stop word list (words that appear in English that don't add any value) from here: http://snowball.tartarus.org/algorithms/english/stop.txt
+
+## Example Input
+
+Here's a paragraph that we want to summarize:
+
+    The purpose of this paper is to extend existing research on entrepreneurial team formation under 
+    a competence-based perspective by empirically testing the influence of the sectoral context on 
+    that dynamics. We use inductive, theory-building design to understand how different sectoral 
+    characteristics moderate the influence of entrepreneurial opportunity recognition on subsequent 
+    entrepreneurial team formation. A sample of 195 founders who teamed up in the nascent phase of 
+    Interned-based and Cleantech sectors is analysed. The results suggest a twofold moderating effect 
+    of the sectoral context. First, a technologically more challenging sector (i.e. Cleantech) demands 
+    technically more skilled entrepreneurs, but at the same time, it requires still fairly 
+    commercially experienced and economically competent individuals. Furthermore, the business context 
+    also appears to exert an important influence on team formation dynamics: data reveals that 
+    individuals are more prone to team up with co-founders possessing complementary know-how when they 
+    are starting a new business venture in Cleantech rather than in the Internet-based sector. 
+    Overall, these results stress how the business context cannot be ignored when analysing 
+    entrepreneurial team formation dynamics by offering interesting insights on the matter to 
+    prospective entrepreneurs and interested policymakers.
+
+## Example Output
+
+Here's a simple extraction-based summary of that paragraph, one of a few possible outputs:
+
+    Furthermore, the business context also appears to exert an important influence on team 
+    formation dynamics: data reveals that individuals are more prone to team up with co-founders 
+    possessing complementary know-how when they are starting a new business venture in Cleantech 
+    rather than in the Internet-based sector. 
+
+## Challenge Input
+
+    This case describes the establishment of a new Cisco Systems R&D facility in Shanghai, China, 
+    and the great concern that arises when a collaborating R&D site in the United States is closed 
+    down. What will that closure do to relationships between the Shanghai and San Jose business 
+    units? Will they be blamed and accused of replacing the U.S. engineers? How will it affect 
+    other projects? The case also covers aspects of the site's establishment, such as securing an 
+    appropriate building, assembling a workforce, seeking appropriate projects, developing 
+    managers, building teams, evaluating performance, protecting intellectual property, and 
+    managing growth. Suitable for use in organizational behavior, human resource management, and 
+    strategy classes at the MBA and executive education levels, the material dramatizes the 
+    challenges of changing a U.S.-based company into a global competitor.
+
+    
+

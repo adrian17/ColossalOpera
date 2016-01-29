@@ -1,0 +1,87 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{makeidx} 
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}       % via http://tex.stackexchange.com/questions/121601/automatically-wrap-the-text-in-verbatim 
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\makeatletter
+\newcommand\href@footnote[2]{#2\footnote{\url{#1}}}
+\DeclareRobustCommand{\href}{\hyper@normalise\href@footnote}
+\makeatother
+
+\def\tightlist{}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Daily Programming Challenges from Reddit},    % title
+    pdfauthor={Jose Nazario},     % author
+    pdfsubject={Computer Programming},   % subject of the document
+    pdfcreator={LaTeX},   % creator of the document
+    pdfproducer={Producer}, % producer of the document
+    pdfkeywords={keyword1, key2, key3}, % list of keywords
+    pdfnewwindow=true,      % links in new PDF window
+    colorlinks=false,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+\makeindex
+
+\title{Daily Programming Challenges from Reddit}
+
+\begin{document}
+    
+\maketitle
+
+\tableofcontents
+
+\chapter{Easy}
+
+\section*{Introduction}
+
+Easy challenges are meant to be fun and a great way to get into programming or a new language. For myself, I think of easy challenges as ones we can see the general idea of how to solve, but we may not know our way around a language yet to tackle it. The easy challenge gives us a concrete way to tackle it. 
+
+As you get more proficient, you'll find these can be tackled in just a few minutes in your language of choice. However they also make a great tool for learning a new language no matter how experienced you are. Many, but not all, can be solved in one or two functions. 
+
+Often in the /r/dailyprogrammer community we'll see more experienced programmers give advice to younger ones about doing things more clearly or in a more idiomatic style. This is great feedback.
+
+\input easy.tex
+
+\chapter{Intermediate}
+
+\section*{Introduction}
+
+Intermediate challenges are meant to help you stretch your chops in your language of choice. You may have to dig around a few esoteric corners of your language, but are still just a programming exercise - they have a clear path to a solution in whatever language you choose. 
+
+\input int.tex
+
+\chapter{Hard}
+
+Hard challenges are meant to really get you thinking like a computer scientist. Often I choose NP hard problems because they force you to consider time-space tradeoffs in a strive for efficiency. These not only require a confidence in a language but often the skills needed to be a good programmer - laying out the problem clearly and seeing a path to a solution, often with a pencil and paper, before you begin coding. 
+
+\input hard.tex
+
+\printindex
+
+\end{document}
